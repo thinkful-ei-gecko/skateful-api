@@ -1,26 +1,231 @@
-# Express Boilerplate!
+Skateful API
+https://skateful-api.herokuapp.com/api
 
-This is a boilerplate project used for starting new projects!
+URL
+/skaters
 
-## Set up
+Method
+GET
 
-Complete the following steps to start a new project (NEW-PROJECT-NAME):
+URL Params
+None
 
-1. Clone this repository to your local machine `git clone BOILERPLATE-URL NEW-PROJECTS-NAME`
-2. `cd` into the cloned repository
-3. Make a fresh start of the git history for this project with `rm -rf .git && git init`
-4. Install the node dependencies `npm install`
-5. Move the example Environment file to `.env` that will be ignored by git and read by the express server `mv example.env .env`
-6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "express-boilerplate",`
+Data Params
+None
 
-## Scripts
+Success Response
+Code: 200
+Content: List of all submitted skaters
 
-Start the application `npm start`
+Error Response 
+Code: 500
+______________________________
 
-Start nodemon for the application `npm run dev`
+URL
+/skaters/:skaterId
 
-Run the tests `npm test`
+Method
+GET
 
-## Deploying
+URL Params
+skaterId= {integer}
 
-When your new project is ready for deployment, add a new Heroku application with `heroku create`. This will make a new git remote called "heroku" and you can then `npm run deploy` which will push to this remote's master branch.
+Data Params
+None
+
+Success Response
+Code: 200
+Content: {
+        "id": 1,
+        "name": "Badri",
+        "location": "Los Angeles",
+        "instagram": "badri",
+        "date_created": "2019-10-25T18:59:52.747Z",
+        "bio": "",
+        "img_url": "https://i.ibb.co/nnK0MQN/Screen-Shot-2019-10-17-at-11-08-47-AM.png",
+        "up_votes": 67
+    }
+
+Error Response 
+Code: 401
+Content: "error, unauthorized request"
+______________________________
+
+URL
+/skaters/:skaterId/comments
+
+Method
+GET
+
+URL Params
+id={integer}
+
+Data Params
+None
+
+Success Response
+Code: 200
+Content: List of all submitted comments
+
+Error Response 
+Code: 401
+Content: "error, unauthorized request"
+______________________________
+
+URL
+/skaters/:skaterId/comments/:commentsId
+
+Method
+GET
+
+URL Params
+skaterId = {integer}
+commentId = {integer}
+
+Data Params
+None
+
+Success Response
+Code: 200
+Content: One comment
+
+Error Response 
+Code: 401
+Content: "error, unauthorized request"
+______________________________
+
+URL
+/skaters
+
+Method
+POST
+
+URL Params
+None
+
+Data Params
+at least: 
+  { 
+  name: "some name",
+  location: "somewhere"
+  }
+  
+
+Success Response
+Code: 200
+Content: {created skater}
+
+Error Response 
+Code: 401
+Content: "error, unauthorized request"
+______________________________
+
+URL
+/skaters/:skaterId/comments/
+
+Method
+POST
+
+URL Params
+skaterId= {integer}
+
+Data Params
+{ 
+skaterId: {integer}
+comment: "some comment"
+}
+
+Success Response
+Code: 200
+Content: submitted comment
+
+Error Response 
+Code: 401
+Content: "error, unauthorized request"
+______________________________
+
+URL
+/skaters/:skaterId
+
+Method
+DELETE
+
+URL Params
+skaterId= {integer}
+
+Data Params
+None
+
+Success Response
+Code: 204
+
+Error Response 
+Code: 401
+Content: "error, unauthorized request"
+______________________________
+
+URL
+/skaters/:skaterId/comments/:commentId
+
+Method
+DELETE
+
+URL Params
+skaterId= {integer}
+commentId= {integer}
+
+Data Params
+None
+
+Success Response
+Code: 204
+
+Error Response 
+Code: 401
+Content: "error, unauthorized request"
+______________________________
+
+URL
+/skaters/:skaterId/comments/:commentId
+
+Method
+PATCH
+
+URL Params
+skaterId= {integer}
+commentId= {integer}
+
+Data Params
+{ comment: "new comment" }
+
+Success Response
+Code: 201
+Content: Updated comment
+
+Error Response 
+Code: 401
+Content: "error, unauthorized request"
+______________________________
+
+URL
+/skaters/:skaterId/
+
+Method
+PATCH
+
+URL Params
+skaterId= {integer}
+commentId= {integer}
+
+Data Params
+can change any properties of skater
+{ name: "new name" }
+
+Success Response
+Code: 201
+Content: Updated skater
+
+Error Response 
+Code: 401
+Content: "error, unauthorized request"
+______________________________
